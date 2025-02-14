@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 // Function to convert decimal to binary (returns an integer representation)
-int conv(int number) {
+int conv(int number) {    
     int weight = 1, rem, binary = 0;
     while (number != 0) {
         rem = number % 2;
