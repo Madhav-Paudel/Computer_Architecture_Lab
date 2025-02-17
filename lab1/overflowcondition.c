@@ -25,7 +25,6 @@ int countBinaryDigits(int num) {
     return count;
 }
 
-// Function to perform binary addition
 int binaryAddition(int bin1, int bin2) {
     int sum = 0, carry = 0, weight = 1;
     
@@ -34,8 +33,8 @@ int binaryAddition(int bin1, int bin2) {
         int bit2 = bin2 % 10;
         int bitsum = bit1 + bit2 + carry;
         
-        sum += (bitsum % 2) * weight; // Store the binary digit
-        carry = bitsum / 2;  // Compute carry
+        sum += (bitsum % 2) * weight; 
+        carry = bitsum / 2;  
         
         bin1 /= 10;
         bin2 /= 10;
@@ -50,8 +49,7 @@ int main() {
     int decimalNum1, decimalNum2, binaryNum1, binaryNum2, result;
 
     printf("\nEnter 'A' to input decimal numbers, 'B' for binary numbers: ");
-    scanf(" %c", &choose); // Added space before %c to handle newline character
-
+    scanf(" %c", &choose);
     if (choose == 'A' || choose == 'a') {
         printf("Enter first decimal number: ");
         scanf("%d", &decimalNum1);
@@ -68,7 +66,6 @@ int main() {
         printf("Enter second binary number (max 4 bits): ");
         scanf("%d", &binaryNum2);
         
-        // Validate binary input
         if (countBinaryDigits(binaryNum1) > 4 || countBinaryDigits(binaryNum2) > 4) {
             printf("Error: Binary numbers must be 4 bits or less!\n");
             return 1;
