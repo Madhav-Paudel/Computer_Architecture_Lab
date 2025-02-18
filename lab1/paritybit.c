@@ -1,3 +1,4 @@
+// to find out even or odd parity bit 
 #include <stdio.h>
 
 int main() {
