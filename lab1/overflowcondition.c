@@ -1,89 +1,43 @@
-// write a program to add binary number or decimal number if user enter decimal number then convert it into binary then 
-// if the added number contain more than 4 digits then print the user the number is overflow 
-#include <stdio.h>
-#include <stdlib.h>
+// Write a program to check overflow condition while adding two binary numbers(4-bit)
+#include<stdio.h>
 
-// Function to convert decimal to binary (returns an integer representation)
-int conv(int number) {    
-    int weight = 1, rem, binary = 0;
-    while (number != 0) {
-        rem = number % 2;
-        binary = binary + rem * weight;
-        number = number / 2;
-        weight = weight * 10;
+//function to add binary numbers bitwise
+int add_binary(int num1, int num2)
+{
+    int bit1,bit2,bit_sum,sum=0,carry = 0,weight = 1,digits=0;
+    while(num1>0 || num2>0 || carry>0)
+    {
+        bit1 = num1%10;
+        bit2 = num2%10;
+        bit_sum = bit1+bit2+carry;
+
+        carry= bit_sum/2;
+        sum += (bit_sum%2)*weight;
+
+        num1/=10;
+        num2/=10;
+        weight*=10;
+        digits++;
+ 
     }
-    return binary;
+    printf("Sum = %d\t",sum);
+
+    if(digits>4)
+    {
+        printf("There is an overflow condition");
+    }
+
+    else{
+        printf("There is no overflow condition");
+    }
 }
 
-// Function to count the number of binary digits
-int countBinaryDigits(int num) {
-    int count = 0;
-    while (num > 0) {
-        count++;
-        num /= 10;
-    }
-    return count;
-}
 
-int binaryAddition(int bin1, int bin2) {
-    int sum = 0, carry = 0, weight = 1;
-    
-    while (bin1 > 0 || bin2 > 0 || carry > 0) {
-        int bit1 = bin1 % 10;
-        int bit2 = bin2 % 10;
-        int bitsum = bit1 + bit2 + carry;
-        
-        sum += (bitsum % 2) * weight; 
-        carry = bitsum / 2;  
-        
-        bin1 /= 10;
-        bin2 /= 10;
-        weight *= 10;
-    }
-    
-    return sum;
-}
-
-int main() {
-    char choose;
-    int decimalNum1, decimalNum2, binaryNum1, binaryNum2, result;
-
-    printf("\nEnter 'A' to input decimal numbers, 'B' for binary numbers: ");
-    scanf(" %c", &choose);
-    if (choose == 'A' || choose == 'a') {
-        printf("Enter first decimal number: ");
-        scanf("%d", &decimalNum1);
-        printf("Enter second decimal number: ");
-        scanf("%d", &decimalNum2);
-
-        printf("Converting decimal numbers to binary...\n");
-        binaryNum1 = conv(decimalNum1);
-        binaryNum2 = conv(decimalNum2);
-        
-    } else if (choose == 'B' || choose == 'b') {
-        printf("Enter first binary number (max 4 bits): ");
-        scanf("%d", &binaryNum1);
-        printf("Enter second binary number (max 4 bits): ");
-        scanf("%d", &binaryNum2);
-        
-        if (countBinaryDigits(binaryNum1) > 4 || countBinaryDigits(binaryNum2) > 4) {
-            printf("Error: Binary numbers must be 4 bits or less!\n");
-            return 1;
-        }
-    } else {
-        printf("Invalid choice! Please enter 'A' or 'B'.\n");
-        return 1;
-    }
-
-    // Perform binary addition
-    result = binaryAddition(binaryNum1, binaryNum2);
-    
-    printf("Binary Sum: %d\n", result);
-    
-    // Check for overflow (if result has more than 4 digits)
-    if (countBinaryDigits(result) > 4) {
-        printf("Overflow detected! The sum exceeds 4-bit limit.\n");
-    }
-
+int main()
+{
+    int num1, num2;
+    printf("Enter two numbers: ");
+    scanf("%d %d",&num1,&num2);
+    add_binary(num1,num2);
     return 0;
 }
