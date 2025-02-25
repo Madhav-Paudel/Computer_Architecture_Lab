@@ -1,13 +1,12 @@
-// to find out even or odd parity bit 
+// c program parity bit (odd or even )
 #include <stdio.h>
-
 int main() {
     unsigned char num;
     int count = 0, temp;
 
     // Get input from user
     printf("Enter an 8-bit number (0-255): ");
-    scanf("%hhu", &num);
+    scanf("%hhd", &num);
 
     temp = num;  
 
