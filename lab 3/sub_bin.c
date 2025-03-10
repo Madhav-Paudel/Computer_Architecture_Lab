@@ -1,3 +1,4 @@
+// C program to subtract binary number 
 #include<stdio.h>
 int subtractBinary(int a,int b)
 {

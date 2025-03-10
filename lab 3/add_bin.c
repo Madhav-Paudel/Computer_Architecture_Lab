@@ -1,4 +1,4 @@
-// to add binary number
+//C program  to add binary number
 #include<stdio.h>
 int addBinary(int a,int b)
 {
@@ -14,13 +14,8 @@ int addBinary(int a,int b)
         place=place * 10; // move to the next binary place
         a=a/10; // remove last bit from a
         b=b/10; // remove last bit from b
-
-
-
     }
-    return  result;
-
-    
+    return  result;   
 }
 int main()
 {
